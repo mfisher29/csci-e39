@@ -2,18 +2,13 @@
 
 $padding: 20px;
 $margin: 10px;
-$primary-color: SlateGrey;
-$primary-accent: mistyrose;
+$primary-accent: SlateGrey;
+$main-color: mistyrose;
 $hover-color: Salmon;
 $button-color: lighten($hover-color, 11);
 $head-foot-background: rgba(200, 54, 54, 0.5); /*transparent pink background with 50% opacity*/
 $default-font: "Muli", sans-serif;
 $border-radius: 10px;
-$progress-bar-width: 250px;
-$progress-bar-height: 20px;
-$progress-bar-background: PapayaWhip;
-$progress-bar-radius: 10px;
-$progress-bar-shadow: 0 1px 4px $primary-color inset;
 
 
 .style-guide {
@@ -41,7 +36,7 @@ $progress-bar-shadow: 0 1px 4px $primary-color inset;
 		margin-bottom: $margin;
 
 		.active {
-			background: pink;
+			background: $main-color;
 		}
 	}
 
@@ -61,8 +56,31 @@ h1 {
 	letter-spacing: 2px;
 }
 
+button {
+	background-color: $button-color;
+	transition: background-color .3s ease;
+	padding: 10px 15px;
+	border-radius: 12px;
+	border: 0px;
+	font-size: 14px;
+	font-weight: bold;
+	letter-spacing: 2px;
+	color: $primary-accent;
+	box-shadow: 1px 1px 2px 0 darken($primary-accent, 11);
+	margin-bottom: 10px;
+	margin-right: 10px;
+}
+button:hover {
+	background-color: $hover-color;
+}
+
+.subscribe-button {
+	border: 2px solid $primary-accent;
+	border-radius: 12px;
+}
+
 .polaroid {
-	background-color: $primary-accent;
+	background-color: $main-color;
 	box-shadow: 1px 2px 3px 1px hsla(0,0,10%, .5);
 	padding: 20px 20px 40px 20px;
 	max-width: 400px;
@@ -70,24 +88,20 @@ h1 {
 	margin: 0 auto;
 
 	img {
-		width: 100%; // allows them to resize with screen stretch/shrink
+		width: 100%; // allows img to resize with screen stretch/shrink
 		height: auto;
 		display: block; // gets rid of extra line height
 		max-width: 225px;
 	}
 }
 
-.album-container {
-	padding: 20px 30px 60px; // top | right | {bottom=top} | {left=right}
+footer {
+	padding: 20px 30px 50px; // top | right | {bottom=top} | {left=right}
 	margin-top: 10px;
 	border-radius: 30px 0 /30px 60px;
-	box-shadow: 0px 1px 2px 1px darken($primary-color, 7);
-	margin-right: 8px;
-}
-
-footer {
+	box-shadow: 0px 1px 2px 1px darken($primary-accent, 7);
+	margin-right: 10px;
 	background-color: $head-foot-background;
-	padding: 20px;
 	li {
 		display: inline-block;
 		margin-right: 15px;
@@ -96,5 +110,8 @@ footer {
 	a {
 		color: white;
 		text-decoration: none;
+	}
+	a:hover {
+		color: $primary-accent;
 	}
 }
