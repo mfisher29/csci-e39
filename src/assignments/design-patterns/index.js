@@ -22,7 +22,7 @@ let subscribe_btn_props = {
 
 let polaroid_props = {
 	img_url: "https://cdn1.thehunt.com/app/public/system/zine_images/2186040/zine_view_thumb/a8b3cec39d6215521cf04e074a042672.jpg",
-	img_description: "Here is an image of a pink polaroid camera. It was taken not with a polaroid cameria, but a digital camera.",
+	img_description: "Here is an image of a pink polaroid camera. It was taken not with a polaroid camera, but a digital camera.",
 	img_title: "Pink Polaroid"
 }
 

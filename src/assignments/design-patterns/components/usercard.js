@@ -18,11 +18,16 @@ const UserCard = (props) => {
     console.log(props)
     return <figure class="polaroid user-card">
         <Polaroid {...props} />
-        <article class="image-details">
-            <h3>{props.img_title}</h3>
-            <h4>Posted by {props.usr_name} on {today}</h4>
+        <article class="img-details">
+            <div class="img-title">
+                <h3>{props.img_title}</h3>
+                <h4>Posted by {props.usr_name} on {today}</h4>
+            </div>
             <p>{props.img_description}</p>
-            <SecondaryButton button_fxn={follow_btn_props.button_fxn} button_text={follow_btn_props.button_text} />
+            
+            <div class="align-follow-btn">
+                <SecondaryButton button_fxn={follow_btn_props.button_fxn} button_text={follow_btn_props.button_text + ' ' + props.usr_name} />
+            </div>
         </article>     
     </figure>
 }
