@@ -8,7 +8,7 @@ const Button = (props) => {
 export default Button
 
 export const SecondaryButton = (props) => 
-    <Button button_cls={props.button_cls} button_fxn={props.button_fxn} button_text={props.button_text} />
+    <Button button_cls="secondary-button" button_fxn={props.button_fxn} button_text={props.button_text} />
 
 Button.PropTypes = {
     button_text: PropTypes.string.isRequired,

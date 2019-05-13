@@ -1,24 +1,37 @@
 import React from 'react'
 import Example, {ActiveCodeProvider} from './support/example'
+import UserCard from './components/usercard.js'
 import Polaroid from './components/polaroid.js'
 import Button, {SecondaryButton} from './components/button';
 import Footer from './components/footer.js'
 
 import './app.scss'
 
-const img_description = "pink polaroid camera"
 
 let generic_btn_props = {
-	button_text: 'Button',
+	button_text: 'Primary',
 	button_fxn: false,
 	button_cls: false
 }
 
 let subscribe_btn_props = {
-	button_text: 'Subscribe',
-	button_fxn: () => alert('Subscribed!'),
-	button_cls: 'subscribe-button'
+	button_text: 'Secondary',
+	button_fxn: () => alert('Does something!'),
+	button_cls: 'secondary-button'
 }
+
+let polaroid_props = {
+	img_url: "https://cdn1.thehunt.com/app/public/system/zine_images/2186040/zine_view_thumb/a8b3cec39d6215521cf04e074a042672.jpg",
+	img_description: "Here is an image of a pink polaroid camera. It was taken not with a polaroid cameria, but a digital camera.",
+	img_title: "Pink Polaroid"
+}
+
+let user_props = {
+	usr_name: "Sakura" 
+}
+
+let card_props = Object.assign({}, user_props, polaroid_props)
+console.log(card_props)
 
 let footer_props = {
 	element1: "contact us",
@@ -38,19 +51,23 @@ const CherryBlossom = () =>
 			easily incorporate her thoughtfully designed React components into their application.
 			</p>
 
+			<Example title="User Entry">
+				<UserCard {...card_props} />
+			</Example>
+
 			<Example title="Buttons">
-				<Button {...generic_btn_props}/>
-				<SecondaryButton {...subscribe_btn_props}/>
+				<Button {...generic_btn_props} />
+				<SecondaryButton {...subscribe_btn_props} />
 			</Example>
 
 			<Example title="Polaroid">
-				<Polaroid img_description={img_description} />
+				<Polaroid {...polaroid_props} />
 			</Example>
 
 			<Example title="Footer">
-				<p>The footer for all cherry blossom pages will always contain 4 elements to maintain a simplistic aesthetic. 
+				<p>The footer for all cherry blossom pages contains 4 elements to maintain a simplistic aesthetic. 
 					These elements can be easily changed by entering the desired footer element name as a prop.</p>
-				<Footer {...footer_props}/>
+				<Footer {...footer_props} />
 			</Example>
 		</body>
 	</ActiveCodeProvider>

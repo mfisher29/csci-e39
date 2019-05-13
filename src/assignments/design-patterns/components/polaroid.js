@@ -7,18 +7,20 @@ let share_btn_props = {
 	button_cls: false
 }
 
-let hide_btn_props = {
-	button_text: 'Hide Description',
-	button_fxn: () => alert('Hides Description'),
+let like_btn_props = {
+	button_text: 'Like',
+	button_fxn: () => alert('Liked!'),
 	button_cls: false
 }
 
-const Polaroid = ({img_description}) => {
+const Polaroid = (props) => {
     return <figure class="polaroid">
-        <img src="https://cdn1.thehunt.com/app/public/system/zine_images/2186040/zine_view_thumb/a8b3cec39d6215521cf04e074a042672.jpg" alt={img_description} />                
-        <figcaption>{img_description}</figcaption>
-        <Button button_fxn={hide_btn_props.button_fxn} button_text={hide_btn_props.button_text} />
-        <Button button_fxn={share_btn_props.button_fxn} button_text={share_btn_props.button_text} />
+        <img src={props.img_url} alt={props.img_description} />
+        <div class="interact-buttons">
+            <Button button_fxn={like_btn_props.button_fxn} button_text={like_btn_props.button_text} />
+            <Button button_fxn={share_btn_props.button_fxn} button_text={share_btn_props.button_text} />
+        </div>                
+        
     </figure>
 }
 
