@@ -47,13 +47,24 @@ $border-radius: 10px;
 	}
 }
 
+pre {
+	overflow: hidden;
+}
+
 body {
 	font-family: $default-font;
+	color: $primary-accent;
 }
 
 h1 {
+	display: flex;
+	align-items: center;
 	color: $button-color;
 	letter-spacing: 2px;
+}
+
+.sakura {
+	max-width: 50px;
 }
 
 button {
@@ -95,9 +106,6 @@ img {
 	margin: 10px;
 }
 
-.img-title {
-}
-
 .img-details {
 	text-align: left;
 	padding: 20px;
@@ -112,10 +120,23 @@ img {
 	margin-right: -10px;
 }
 
-.user-card {
+.post {
 	display: flex;
 	flex-direction: row;
 	background-color: white;
+}
+
+@media (max-width:600px)
+{
+	.post {
+		flex-direction: column;
+	}
+	.polaroid {
+		min-width: 150px;
+	}
+	img {
+		max-width: 130px;
+	}
 }
 
 footer {
@@ -128,6 +149,7 @@ footer {
 	li {
 		display: inline-block;
 		margin-right: 15px;
+		margin-bottom: 10px;
 		letter-spacing: 2px;
 	}
 	a {

@@ -14,9 +14,9 @@ var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = today.getFullYear();
 today = mm + '/' + dd + '/' + yyyy;
 
-const UserCard = (props) => {
+const GalleryPost = (props) => {
     console.log(props)
-    return <figure class="polaroid user-card">
+    return <figure class="polaroid post">
         <Polaroid {...props} />
         <article class="img-details">
             <div class="img-title">
@@ -32,4 +32,4 @@ const UserCard = (props) => {
     </figure>
 }
 
-export default UserCard
+export default GalleryPost
