@@ -1,8 +1,76 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
-
+import Member from '../../ui/components/member'
+import Textbox from '../../ui/components/textbox'
 import './app.scss'
+import InitialBlock from "../../ui/components/intial_block";
+
+
+function Messages (props) {
+
+	var messages = props.messages;
+	var self = props.self;
+	var regBadWords = /drugs|politics|wtf/gi;
+
+
+	return (
+		<main id="message-container">
+			<ul>
+				{messages.map(({id, student, text, createdAt}) =>
+					<li className="chat-item" key={id}>
+
+						<KidName name={student.name} self={self} />
+						<KidFullName name={student.name} self={self}/>
+
+						<label className="timestamp"> at {createdAt.toLocaleTimeString()} on {createdAt.toLocaleDateString()}</label>
+
+						<KidMessage name={student.name} self={self} text={text.replace(regBadWords, "!@%#")}/>
+
+					</li>
+				)}
+			</ul>
+		</main>
+	);
+}
+
+function KidName (props) {
+	var name = props.name;
+
+	if (name == props.self.name) {
+		return <InitialBlock name={name} cn="student-name" />
+	}
+	else {
+		return <InitialBlock name={name} cn="friend-name" />
+	}
+
+}
+
+function KidFullName (props) {
+    var name = props.name;
+
+    if (name == props.self.name) {
+        return <label className="student-fullname">{name}</label>;
+    }
+    else {
+        return <label className="friend-fullname">{name}</label>;
+    }
+
+}
+
+
+function KidMessage (props) {
+	var name = props.name;
+	var text = props.text;
+
+	if (name == props.self.name) {
+		return <p className="message"><span>{text}</span></p>;
+	}
+	else {
+		return <p className="friend-message"><span>{text}</span></p>;
+	}
+
+}
 
 class Chat extends React.Component {
 
@@ -12,71 +80,33 @@ class Chat extends React.Component {
 		this.state = {currentText: ``}
 	}
 
-	onType(e) {
-		const {chat} = this.props.actions
-		const {currentText: prevText} = this.state
-		const currentText = e.target.value
-
-		if (!currentText.length) chat.stopTyping()
-		if (currentText.length === 1 && !prevText.length) chat.startTyping()
-
-		this.setState({currentText})
-	}
-
-	onSend(e) {
-		if (e.type === `keyup` && e.key !== `Enter`) return
-
-		const {chat} = this.props.actions
-		const {currentText} = this.state
-		if (!currentText.length) return
-
-		chat.send(currentText)
-		this.setState({currentText: ``})
-	}
-
-	getTypingMessage() {
-		const {typing} = this.props.chat
-
-		switch (typing.length) {
-			case 0: return null
-			case 1: return `${typing[0].name} is typing...`
-			case 2: return `${typing[0].name} and ${typing[1].name} are typing...`
-			case 3: return `${typing[0].name}, ${typing[1].name}, and ${typing[2].name} are typing...`
-			// len > 3
-			default: return `${typing.length} members are typing...`
-		}
-	}
 
 	render() {
 		const {classroom, chat, actions} = this.props
 		const {currentText} = this.state
 
-		return <div>
-			<h1>Chatroom</h1>
+		return <div class="container">			
+			<header>
+				<img src="https://d29fhpw069ctt2.cloudfront.net/icon/image/49181/preview.svg" class="kids-images" alt="crayon" />
+				<h1>Kids Chatroom</h1>
+				<img src="https://d29fhpw069ctt2.cloudfront.net/icon/image/49181/preview.svg" class="kids-images" alt="crayon" />
+			</header>
 
-			<h2>Members</h2>
-			<ul>
-				{classroom.students.map(({id, name}) =>
-					<li key={id}><span>{name}</span></li>
-				)}
-			</ul>
+			<Member classroom={classroom}/>
 
-			<h2>Messages</h2>
-			<ul>
-				{chat.messages.map(({id, student, text, createdAt}) =>
-					<li key={id}>
-						<label>{student.name} at {createdAt.toISOString()}</label>
-						<p>{text}</p>
-					</li>
-				)}
-			</ul>
+			<main>
+				<h2>Messages</h2>
+				<Messages messages={chat.messages} self={classroom.self}/>
+			</main>
 
-			<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
-			<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
-			<p>{this.getTypingMessage()}</p>
+			<aside>
+				<img src="https://s3.envato.com/files/253842432/Preview_Screenshots/160x600.jpg" data-alt="Kids Advertisement" data-title="fake-ad" />
+			</aside>
+
+			<Textbox chat={chat} actions={actions}/>
 		</div>
-	}
 
+	}
 }
 
 const studentPropType = PropTypes.shape({

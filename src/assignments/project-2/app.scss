@@ -1,0 +1,223 @@
+$background-color: #FFA500; //linear-gradient(orange, rgb(255, 140, 0));
+$secondary-color: #87CEEB;
+$primary-gray: #edf1f2;
+$white: #fcfcfc;
+$primary-font: 'Dokdo', cursive;
+$body-font: $primary-font;
+$li_alt_color : darken($primary-gray, 10);
+$my-color: $background-color;
+$friend-color: $secondary-color;
+$font-list: Calibri, Arial, sans-serif;
+$handwriting-font: 'Shadow Into Light', cursive;
+
+
+#message-container {
+ background-color: $primary-gray;
+}
+
+#member-list {
+ background-color: $secondary-color;
+}
+
+#member-list > ul > li {
+ background-color: $white;
+ border: solid 1px $primary-gray;
+ font-family: $primary-font;
+ font-size: 20px;
+}
+
+#member-list > ul > li:hover {
+ background-color: $background-color;
+}
+
+// box size reset
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+  display:block;
+}
+
+
+// starting styles
+html {
+	font-size: 16px;
+}
+
+body {
+  background: linear-gradient(
+                  130deg,
+                  $primary-gray,
+                  $background-color
+  );
+  max-height: 100vh;
+  color: #060606;
+  border: 0;
+  margin: 0;
+}
+
+ul{
+
+  list-style: none;
+
+  li {padding:5px
+  }
+}
+
+.container {
+  display: grid;
+	grid-template-columns: 0.2fr 1fr 0.2fr;
+  grid-template-rows: 100px 1fr 50px;
+  grid-template-areas:
+        "header header header"
+        "sidebar main aside"
+        "none footer footer";
+  border: black;
+}
+
+header {
+  grid-area: header;
+  background-color: $white;
+	color: $background-color;
+	text-align: center;
+	padding: 1rem;
+  border-bottom: 0.3rem solid $primary-gray;
+  display: flex;
+  justify-content: center;
+  //align-items: baseline;
+}
+
+header > h1 {
+  font-family: $primary-font;
+  font-size: 48px;
+  text-align: center;
+  margin: 20px;
+}
+
+.kids-images {
+  max-width: 50px;
+  //padding: 10px;
+}
+
+nav {
+  grid-area: sidebar;
+  overflow-y: scroll;
+  min-width: 250px;
+  max-height: 75vh;
+}
+
+main {
+  grid-area: main;
+  overflow-y: scroll;
+  max-height: 75vh;
+}
+
+aside {
+	grid-area: aside;
+	position: sticky;
+	top: 10px;
+	height: 600px;
+	width: 160px;
+} 
+
+footer {
+  grid-area: footer;
+  background-color: $white;
+  color: $background-color;
+  text-align: center;
+  padding: 1rem;
+  border-top: 0.3rem solid $primary-gray;
+}
+
+h2 {
+  text-align: center;
+  font-family: $primary-font;
+  font-size: 36px;
+}
+
+//#body-container {
+////  max-height:80vh;
+////  overflow-y: auto;
+////
+//
+
+
+
+.chat-item {
+  list-style: none;
+}
+
+.chat-footer-grid {
+   display: grid;
+   grid-template-columns: 1fr 0.2fr
+}
+
+.student-name {
+	background-color: $my-color;
+	font-size: 2em;
+	border-radius: 50%;
+	padding: 10px;
+}
+
+.friend-name {
+	background-color: $friend-color;
+	font-size: 2em;
+	border-radius: 50%;
+	padding: 10px;
+}
+
+.timestamp {
+
+}
+
+.message > span{
+   background-color: $my-color;
+   font-size: 20px;
+   font-family: $handwriting-font;
+   padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+
+ }
+
+.friend-message > span{
+  background-color: $friend-color;
+  justify-items: right;
+  font-family: $handwriting-font;
+  font-size: 20px;
+  position: absolute;
+  right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+
+}
+
+.friend-message {
+  position: relative;
+  padding-bottom: 20px
+}
+
+button {
+	background-color: $white;
+	border: 0.3rem outset $primary-gray;
+	border-radius: 25px;
+	color: $background-color;
+	font-weight: 900;
+}
+
+input {
+	border: 0.3rem inset $primary-gray;
+	border-radius: 25px;
+}
